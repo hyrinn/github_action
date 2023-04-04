@@ -7,7 +7,7 @@ if num:
  except Exception:
   exit()
   
- else:
+else:
   num = 1
   
-  print(f"::set-output name = num squred::{num **2)"}
+  print(f"::set-output name = num_squred::{num **2)"}
