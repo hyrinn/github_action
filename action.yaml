@@ -1,26 +1,27 @@
-name : 'custom github action'
+name : 'Custom github Action'
 description: 'takes number and reurn the squred number'
 inputs: 
   num:
-  required: true
-  default: "1"
-outputs: 
-  num_squred:
-    value: ${{ }}
+    required: true
+    default: "1"
+ outputs: 
+    num_squred:
+    value: ${{ steps.get-squre.outputs.num_squared }}
 runs:
   using: 'composite'
   steps: 
-    - name: Install python
+    - name: Install Python
       uses: action/setup-python@v4
       with:
         python -version: '3.10'
-    - name: Install denpendencies
+    - name: Install Denpendencies
       run: pip install -r requirements.txt
       shell: bash
-      run:
-        echo"INPUT_NUM${{ inputs.num }} >> $GITHUB_ENV
+    - name: Pass Inputs to shell
+      run: |
+        echo"INPUT_NUM=${{ inputs.num }}" >> $GITHUB_ENV
       shell: bash
-   - name: fatch the number suare
+   - name: Fetch the number's suare
      id : get-squre
      run: python src/get_num_squre.py
      shell: bash
